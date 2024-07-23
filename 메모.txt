@@ -1,0 +1,36 @@
+
+const getData = async () => {
+  await fetch(
+    `https://dabipyeung.com/soaply_backend/model/get_details.php?idx=${url.searchParams.get(
+      'idx'
+    )}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+      let dataElement;
+
+      data.map((item) => {
+        console.log(item);
+        dataElement = `
+         
+      <div>
+        <h2>${item.pro_name}</h2>
+        <p class="pro_desc">${item.pro_desc}</p>
+        <p class="pro_price">${item.pro_price}</p>
+        <p class="pro_reg">${item.pro_reg}</p>
+      </div>
+    
+        `;
+        url.searchParams.get('idx');
+        a.insertAdjacentHTML('beforeend', dataElement);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+getData();
